@@ -1,1 +1,34 @@
-<p>obra-table works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>{{obraObj.name}}</th>
+    </tr>
+    <tr>
+      <td>{{obraObj.endereco}}</td>
+      <td>{{obraObj.name}}</td>
+    </tr>
+    <tr>
+      <th>Quinzena: {{quinzenaObj.codQuin}}</th>
+      <td>Início: {{quinzenaObj.inicio}}</td>
+      <td>Fim: {{quinzenaObj.fim}}</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Nome</th>
+      <th>Função</th>
+      <th>Dias</th>
+      <th>Diária</th>
+      <th>Remuneração</th>
+      <th>PIX</th>
+    </tr>
+    <tr *ngFor="let func of funcList">
+      <td>{{func.name}}</td>
+      <td>{{func.funcao}}</td>
+      <td>{{func.dias}}</td>
+      <td>{{func.diaria}}</td>
+      <td>{{func.remuneracao}}</td>
+      <td>{{func.pix}}</td>
+    </tr>
+  </tbody>
+</table>

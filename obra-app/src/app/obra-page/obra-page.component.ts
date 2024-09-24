@@ -35,11 +35,6 @@ export class ObraPageComponent implements OnInit {
     this.getObrasId()
   }
 
-  navigateTest(){
-
-    this.router.navigate(['obra-page/obra-tables/'])
-  }
-
 
   getObrasId(){
 
@@ -67,6 +62,13 @@ export class ObraPageComponent implements OnInit {
   getSelectedQuinzena(value:string){
   this.selectedQuinzena = value;
   
+  }
+
+
+  tableRoute(){
+
+  this.router.navigate(['obra-page/obra-tables/'],{queryParams:{'codObra':this.selectedObra,'quinzenaId':this.selectedQuinzena}})
+
   }
 
 
