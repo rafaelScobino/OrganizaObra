@@ -1,0 +1,15 @@
+<h1>Cadastro de Funcionario</h1>
+
+<form id="funcForm" #funcForm="ngForm" (ngSubmit)="submitFunc()">
+    <label for="nomeFunc">Funcionario: </label>
+    <input id="nomeFunc" name="nomeFunc" [(ngModel)]="nomeFunc" type="text" placeholder="Nome do Funcionário">
+    <label for="funcaoFunc">Função: </label>
+    <input id="funcaoFunc" name="funcaoFunc" [(ngModel)]="funcaoFunc" type="text" placeholder="Função do Funcionario">
+    <label for="diasFunc">Dias trabalhados: </label>
+    <input id="diasFunc" name="diasFunc" [(ngModel)]="diasFunc" type="number" placeholder="Dias trabalhados">  
+    <label for="diariaFunc">Valor da Diaria: </label>
+    <input id="diaFunc" name="diaFunc" [(ngModel)]="diariaFunc" type="number" placeholder="Valor da Diaria">
+    <label for="pixFunc">PIX: </label>
+    <input id="pixFunc" name="pixFunc" [(ngModel)]="pixFunc" type="text" placeholder="PIX">
+    <button type="submit">Salvar</button>
+</form>

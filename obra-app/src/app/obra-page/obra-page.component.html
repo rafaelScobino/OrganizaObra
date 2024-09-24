@@ -1,0 +1,28 @@
+<h1>OrganizObra v1.0</h1>
+<h2>Selecione a Obra</h2>
+<label>Obra: </label>
+<select #obraSelect (change)="getSelectedObra(obraSelect.value)">
+    <option>Selecione uma obra abaixo</option>
+    <option *ngFor = "let obra of obraOptions">{{obra}}</option>
+</select>
+<label>Quinzena: </label>
+<select *ngIf="isQuinSelectActive" #quinzenaSelect (change)="getSelectedQuinzena(quinzenaSelect.value)" >
+    <option *ngFor = "let quinzena of quinzenaOptions">{{quinzena.codQuin}}</option>
+</select>
+
+<button (click)="isObraActive = !isObraActive" >Nova Obra</button>
+
+<app-obra-form *ngIf="isObraActive"></app-obra-form>
+
+<button (click)="isQuinzenaActive = !isQuinzenaActive" >Nova Quinzena</button>
+
+<app-quinzena-form [obra]="selectedObra"  *ngIf="isQuinzenaActive"></app-quinzena-form>
+
+<button (click)="isFuncActive = !isFuncActive">Cadastrar Funcionário</button>
+
+<app-func-form [obra]="selectedObra" [quinzena]="selectedQuinzena" *ngIf="isFuncActive"></app-func-form>
+
+<br><br>
+<button (click)="navigateTest()">Visualiza Obra</button>
+
+<router-outlet></router-outlet>

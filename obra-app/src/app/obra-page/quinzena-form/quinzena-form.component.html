@@ -1,0 +1,9 @@
+<h1>Cadastrar Quinzena</h1>
+
+<form id="obraForm" #quinzenaForm="ngForm" (ngSubmit)="submitQuinzena()" >
+    <label for="inicioQuinzena">Data de inicio: </label>
+    <input [(ngModel)]="inicioQuinzena" id="inicioQuinzena" [ngModelOptions]="{standalone: true}" type="date" placeholder="Data de Inicio">
+    <label for="fimQuinzena">Data de fim: </label>
+    <input [(ngModel)]="fimQuinzena" id="fimQuinzena" [ngModelOptions]="{standalone: true}" type="date" placeholder="Data de Fim">
+    <button type="submit">Salvar</button>
+</form>
