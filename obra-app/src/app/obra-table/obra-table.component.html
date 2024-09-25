@@ -1,19 +1,19 @@
-<table>
+<table *ngFor="let obra of obraList">
   <thead>
     <tr>
-      <th>{{obraObj.name}}</th>
+      <th>{{obra.name}}</th>
     </tr>
     <tr>
-      <td>{{obraObj.endereco}}</td>
-      <td>{{obraObj.name}}</td>
-    </tr>
-    <tr>
-      <th>Quinzena: {{quinzenaObj.codQuin}}</th>
-      <td>Início: {{quinzenaObj.inicio}}</td>
-      <td>Fim: {{quinzenaObj.fim}}</td>
+      <td>{{obra.endereco}}</td>
+      <td>{{obra.name}}</td>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngFor="let quinzena of obra.quinzenas">
+     <tr>
+      <th>Quinzena: {{quinzena.codQuin}}</th>
+      <td>Início: {{quinzena.inicio}}</td>
+      <td>Fim: {{quinzena.fim}}</td>
+    </tr>
     <tr>
       <th>Nome</th>
       <th>Função</th>
@@ -22,7 +22,7 @@
       <th>Remuneração</th>
       <th>PIX</th>
     </tr>
-    <tr *ngFor="let func of funcList">
+    <tr *ngFor="let func of quinzena.funcionarios">
       <td>{{func.name}}</td>
       <td>{{func.funcao}}</td>
       <td>{{func.dias}}</td>

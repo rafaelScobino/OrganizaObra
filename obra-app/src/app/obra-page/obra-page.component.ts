@@ -65,11 +65,16 @@ export class ObraPageComponent implements OnInit {
   }
 
 
-  tableRoute(){
-
-  this.router.navigate(['obra-page/obra-tables/'],{queryParams:{'codObra':this.selectedObra,'quinzenaId':this.selectedQuinzena}})
-
+  quinzenaRoute(){
+  this.router.navigate(['obra-page/obra-tables/'],{queryParams:{'codObra':this.selectedObra,'quinzenaId':this.selectedQuinzena,'allObra':0}})
   }
 
+  obraRoute(){
+  this.router.navigate(['obra-page/obra-tables/'],{queryParams:{'codObra':this.selectedObra,'quinzenaId':this.selectedQuinzena,'allObra':1}})
+  }
+
+  allObraRoute(){
+  this.router.navigate(['obra-page/obra-tables/'],{queryParams:{'codObra':this.selectedObra,'quinzenaId':this.selectedQuinzena,'allObra':2}})
+  }
 
 }

@@ -16,11 +16,14 @@ import { Obra } from '../models/obra.model';
 
 export class ObraTableComponent implements OnInit {
 
-obra!:string;
-obraObj!:Obra;
-quinzenaObj!:Quinzena;
+//URL Params
+viewType!:string;
 quinzena!:string;
-funcList!:Array<Funcionario>;
+obra!:string;
+
+quinObraObj!:Obra;
+obraList!:Array<Obra>;
+
 
 
 constructor(private router: Router,private lsServ: LocalStgServiceService){}
@@ -28,11 +31,23 @@ constructor(private router: Router,private lsServ: LocalStgServiceService){}
 
 ngOnInit(): void {
 
-  this.router.events.subscribe((data) => {
+  this.router.events.subscribe(() => {
 
+    this.clearInfos()
     this.getParams()
-    console.log(this.obra + this.quinzena)
-    this.getInfos()
+    console.log(this.viewType)
+
+    switch(this.viewType){
+      case '0':
+        this.getQuinInfo();
+        break;
+      case '1':
+        this.getObraInfo();
+        break;
+      case '2':
+        this.getAllObraInfo();
+        break;
+    }
 
   })
 
@@ -43,19 +58,40 @@ getParams(){
 
   let params = this.router.parseUrl(this.router.url).queryParams
 
+  this.viewType = params['allObra']
   this.obra = params['codObra'];
   this.quinzena = params['quinzenaId']
 
 }
 
-getInfos(){
-  let obra = this.lsServ.lsObjGetOne(this.obra)
-  this.obraObj = obra;
-  let quinzena = parseInt(this.quinzena);
-  this.quinzenaObj = obra.quinzenas[(quinzena-1)];
-  let funcArr = obra.quinzenas[(quinzena - 1)].funcionarios
-  this.funcList = funcArr;
+createObra(cod: string,nome: string,cliente: string,endereco: string,inicio: Date,fim: Date){ 
+    this.quinObraObj = new Obra(cod,nome,cliente,endereco,inicio,fim)
+  }
 
+getQuinInfo(){
+  let obra = this.lsServ.lsObjGetOne(this.obra);
+  let quinzena = parseInt(this.quinzena);
+  this.createObra(obra.codObra,obra.name,obra.cliente,obra.endereco,obra.inicio,obra.fim)
+  this.quinObraObj.quinzenas.push(obra.quinzenas[(quinzena-1)])
+  this.obraList.push(this.quinObraObj);
+}
+
+
+getObraInfo(){
+  let obra = this.lsServ.lsObjGetOne(this.obra)
+  this.obraList.push(obra)
+  console.log(this.obraList)
+}
+
+getAllObraInfo(){
+  let obras = this.lsServ.lsObjGetAll();
+  this.obraList = obras;
+  console.log(this.obraList)
+  
+}
+
+clearInfos(){
+  this.obraList = [];
 }
 
 

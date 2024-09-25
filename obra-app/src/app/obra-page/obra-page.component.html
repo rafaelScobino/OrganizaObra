@@ -23,8 +23,8 @@
 <app-func-form [obra]="selectedObra" [quinzena]="selectedQuinzena" *ngIf="isFuncActive"></app-func-form>
 
 <br><br>
-<button (click)="tableRoute()">Visualiza Obra</button>
-<button (click)="tableRoute()">Visualiza Quinzena</button>
-<button (click)="tableRoute()">Visualiza Obras</button>
+<button (click)="obraRoute()">Visualiza Obra</button>
+<button (click)="quinzenaRoute()">Visualiza Quinzena</button>
+<button (click)="allObraRoute()">Visualiza Obras</button>
 
 <router-outlet></router-outlet>

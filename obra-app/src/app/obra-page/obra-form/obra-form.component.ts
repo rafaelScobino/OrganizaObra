@@ -35,12 +35,11 @@ export class ObraFormComponent {
 
   createObra(){ 
     this.obraObj = new Obra(this.codObra,this.nomeObra,this.clienteObra,this.enderecoObra,this.inicioObra,this.fimObra)
-
   }
 
   submitObra(){
   console.log('SubmitWorking')
-    this.createObra;
+    this.createObra();
     let data = this.obraObj;
     console.log(data)
     this.lsServ.lsObjSet(this.codObra,data)
