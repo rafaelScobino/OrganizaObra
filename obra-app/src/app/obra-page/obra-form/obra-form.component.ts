@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Obra } from '../../models/obra.model';
 import { FormsModule } from '@angular/forms';
 import { LocalStgServiceService } from '../../services/local-stg-service.service';
@@ -23,7 +23,9 @@ export class ObraFormComponent {
 
   obraObj!:Obra;
 
-  clearObraForm(){
+  @Output() obraSubmitted: any
+
+  cleanInputs(){
     this.codObra = "";
     this.nomeObra = "";
     this.clienteObra = "";
@@ -43,6 +45,7 @@ export class ObraFormComponent {
     let data = this.obraObj;
     console.log(data)
     this.lsServ.lsObjSet(this.codObra,data)
+    this.cleanInputs()
   }
 
 }

@@ -2,10 +2,7 @@
   <thead>
     <tr>
       <th>{{obra.name}}</th>
-    </tr>
-    <tr>
-      <td>{{obra.endereco}}</td>
-      <td>{{obra.name}}</td>
+      <td><button (click)="isEditActive()">{{editBtn}}</button></td>
     </tr>
   </thead>
   <tbody *ngFor="let quinzena of obra.quinzenas">
@@ -13,6 +10,8 @@
       <th>Quinzena: {{quinzena.codQuin}}</th>
       <td>Início: {{quinzena.inicio}}</td>
       <td>Fim: {{quinzena.fim}}</td>
+      <td><button *ngIf="isEdit" >Editar</button></td>
+      <td><button *ngIf="isEdit" >Excluir</button></td>
     </tr>
     <tr>
       <th>Nome</th>
@@ -29,6 +28,18 @@
       <td>{{func.diaria}}</td>
       <td>{{func.remuneracao}}</td>
       <td>{{func.pix}}</td>
+      <td *ngIf="isEdit" ><button>Editar</button></td>
+      <td *ngIf="isEdit" ><button>Excluir</button></td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th>Endereço</th>
+      <th>Cliente</th>
+    </tr>
+    <tr>
+      <td>{{obra.endereco}}</td>
+      <td>{{obra.cliente}}</td>
+    </tr>
+  </tfoot>
 </table>

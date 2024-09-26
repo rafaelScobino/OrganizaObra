@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Obra } from '../models/obra.model';
 import { Router, RouterOutlet } from '@angular/router';
 import { LocalStgServiceService } from '../services/local-stg-service.service';
@@ -27,6 +27,8 @@ export class ObraPageComponent implements OnInit {
 
   quinzenaOptions!:Array<any>;
   @Input() selectedQuinzena:string = '1';
+
+  @Output() quinzenaSubmitted: any
   
   constructor(private router: Router,private lsServ: LocalStgServiceService){}
 

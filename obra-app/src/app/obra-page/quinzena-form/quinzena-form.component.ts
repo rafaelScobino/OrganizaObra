@@ -39,6 +39,12 @@ export class QuinzenaFormComponent {
   this.quinzenaObj = new Quinzena(codQuin,this.inicioQuinzena,this.fimQuinzena)
   }
 
+  cleanInputs(){
+    this.inicioQuinzena = new Date();
+    this.fimQuinzena = new Date();
+
+  }
+
   submitQuinzena(){
     let obraObj = this.lsServ.lsObjGetOne(this.obra);
 
@@ -51,6 +57,8 @@ export class QuinzenaFormComponent {
     obraObj.quinzenas.push(newQuinzena);
 
     this.lsServ.lsObjSet(obraObj.codObra,obraObj);
+
+    this.cleanInputs()
 
   }
 

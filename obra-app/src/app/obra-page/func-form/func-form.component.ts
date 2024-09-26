@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Funcionario } from '../../models/funcionario.model';
 import { LocalStgServiceService } from '../../services/local-stg-service.service';
 import { FormsModule } from '@angular/forms';
@@ -24,10 +24,20 @@ export class FuncFormComponent {
 
   funcObj!:Funcionario;
 
+  @Output() funcSubmitted: any
+
   constructor(private lsServ: LocalStgServiceService){}
   
   createFunc(){
   this.funcObj = new Funcionario(this.nomeFunc,this.funcaoFunc,this.diasFunc,this.diariaFunc,this.pixFunc)
+  }
+
+  cleanInputs(){
+    this.nomeFunc = '';
+    this.funcaoFunc = '';
+    this.diasFunc = 0;
+    this.diariaFunc = 0;
+    this.pixFunc = '';
   }
 
   submitFunc(){
@@ -42,6 +52,8 @@ export class FuncFormComponent {
     obraObj.quinzenas[(quinzena - 1)].funcionarios.push(newFunc);
 
     this.lsServ.lsObjSet(obraObj.codObra,obraObj);
+    
+    this.cleanInputs()
 
   }
 

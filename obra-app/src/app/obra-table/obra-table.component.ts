@@ -24,6 +24,9 @@ obra!:string;
 quinObraObj!:Obra;
 obraList!:Array<Obra>;
 
+isEdit:boolean = false;
+editBtn:string = 'Editar Obra';
+
 
 
 constructor(private router: Router,private lsServ: LocalStgServiceService){}
@@ -92,6 +95,16 @@ getAllObraInfo(){
 
 clearInfos(){
   this.obraList = [];
+}
+
+isEditActive(){
+  this.isEdit = !this.isEdit;
+  if(this.isEdit){
+    this.editBtn = 'Fechar Edição'
+  }else{
+    this.editBtn = 'Editar Obra'
+  }
+
 }
 
 
